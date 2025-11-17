@@ -16,12 +16,15 @@ private int count;
 
 public TextMeshProUGUI countText;
 
+public GameObject winText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
        rb = GetComponent<Rigidbody>(); 
        count = 0;
        SetCountText();
+       winText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -51,11 +54,15 @@ void OnTriggerEnter(Collider other)
     if(other.gameObject.CompareTag("Pickup")){
         other.gameObject.SetActive(false);
         count = count + 1;
+        SetCountText();
     }
 }
 
 void SetCountText(){
     countText.text = "Count: " +count.ToString();
+    if(count >= 6){
+        winText.SetActive(true);
+    }
 }
 
 

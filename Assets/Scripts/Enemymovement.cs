@@ -21,4 +21,14 @@ private NavMeshAgent navMeshAgent;
             navMeshAgent.SetDestination(player.position);
         }
     }
+
+void OnTriggerEnter(Collider other)
+{
+     if(other.gameObject.CompareTag("ResetEnemy")){
+        other.gameObject.SetActive(false);
+ transform.position = new Vector3(0f, 0.5f, -5f);
+}
+}
+
+
 }

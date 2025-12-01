@@ -56,6 +56,10 @@ void OnTriggerEnter(Collider other)
         count = count + 1;
         SetCountText();
     }
+
+     if(other.gameObject.CompareTag("Speed")){
+        other.gameObject.SetActive(false);
+        speed = speed + 1;}
 }
 
 void SetCountText(){
@@ -72,6 +76,10 @@ private void OnCollisionEnter (Collision collision){
         winText.SetActive(true);
         winText.GetComponent<TextMeshProUGUI>().text = "You Lose!!!";
     }
+
+
+
+
 }
 
 
